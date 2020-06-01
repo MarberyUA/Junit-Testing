@@ -1,7 +1,7 @@
 public class Calculator {
     private Double firstValue;
     private String mathematicalOperation;
-    private Double secondValue;
+    private Double secondValue ;
 
     public Calculator() {
 
@@ -17,8 +17,8 @@ public class Calculator {
         return firstValue;
     }
 
-    public void setFirstValue(Double firstValue) {
-        this.firstValue = firstValue;
+    public void setFirstValue(Number firstValue) {
+        this.firstValue = firstValue.doubleValue();
     }
 
     public String getMathematicalOperation() {
@@ -26,18 +26,21 @@ public class Calculator {
     }
 
     public void setMathematicalOperation(String mathematicalOperation) {
-        this.mathematicalOperation = mathematicalOperation;
+        this.mathematicalOperation = mathematicalOperation.replaceAll(" ", "");
     }
 
     public Number getSecondValue() {
         return secondValue;
     }
 
-    public void setSecondValue(Double secondValue) {
-        this.secondValue = secondValue;
+    public void setSecondValue(Number secondValue) {
+        this.secondValue = secondValue.doubleValue();
     }
 
     public Double calculate() {
+        if (firstValue == null || (secondValue == null || secondValue == 0)) {
+            return null;
+        }
         switch (mathematicalOperation) {
             case ("*"):
                 return firstValue * secondValue;
