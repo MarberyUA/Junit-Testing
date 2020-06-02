@@ -1,26 +1,42 @@
 public class Calculator {
 
-    public Double calculate(Number firstValue, String mathematicalOperation, Number secondValue) {
+    public Number calculate(Number firstValue, String mathematicalOperation, Number secondValue) {
         if (firstValue == null || secondValue == null) {
-            throw new IllegalArgumentException("");
+            throw new IllegalArgumentException();
         }
-        Double doubleFirstValue = firstValue.doubleValue();
-        Double doubleSecondValue = secondValue.doubleValue();
+        double doubleFirstValue = firstValue.doubleValue();
+        double doubleSecondValue = secondValue.doubleValue();
         mathematicalOperation = mathematicalOperation.replaceAll(" ", "");
         if (mathematicalOperation.equals("/") && doubleSecondValue == 0) {
-            throw new IllegalArgumentException("");
+            throw new IllegalArgumentException();
         }
         switch (mathematicalOperation) {
             case ("*"):
+                if (firstValue.intValue() == doubleFirstValue
+                        && secondValue.intValue() == doubleSecondValue) {
+                    return firstValue.intValue() * secondValue.intValue();
+                }
                 return doubleFirstValue * doubleSecondValue;
             case ("+"):
+                if (firstValue.intValue() == doubleFirstValue
+                        && secondValue.intValue() == doubleSecondValue) {
+                    return firstValue.intValue() + secondValue.intValue();
+                }
                 return doubleFirstValue + doubleSecondValue;
             case ("-"):
+                if (firstValue.intValue() == doubleFirstValue
+                        && secondValue.intValue() == doubleSecondValue) {
+                    return firstValue.intValue() - secondValue.intValue();
+                }
                 return doubleFirstValue - doubleSecondValue;
             case ("/"):
+                if (firstValue.intValue() == doubleFirstValue
+                        && secondValue.intValue() == doubleSecondValue) {
+                    return firstValue.intValue() / secondValue.intValue();
+                }
                 return doubleFirstValue / doubleSecondValue;
             default:
-                throw new ArithmeticException("");
+                throw new ArithmeticException();
         }
     }
 }
