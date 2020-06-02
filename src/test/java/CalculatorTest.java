@@ -22,6 +22,9 @@ public class CalculatorTest {
     @Test
     public void isMethodReturnIntWithIntArguments() {
         Assert.assertEquals(Integer.valueOf(1), calculator.calculate(1, "*", 1));
+        Assert.assertEquals(Integer.valueOf(4), calculator.calculate(2, "+", 2));
+        Assert.assertEquals(Integer.valueOf(-8), calculator.calculate(2, "-", 10));
+        Assert.assertEquals(Integer.valueOf(1), calculator.calculate(1, "/", 1));
     }
 
     @Test
@@ -32,6 +35,9 @@ public class CalculatorTest {
     @Test
     public void isMethodReturnsDoubleWithOneDoubleAndOneInt() {
         Assert.assertEquals(Double.valueOf(2.3), calculator.calculate(1, "+", 1.3));
+        Assert.assertEquals(Double.valueOf(0.5), calculator.calculate(1.5, "-", 1));
+        Assert.assertEquals(Double.valueOf(5.0), calculator.calculate(2.5, "*", 2));
+        Assert.assertEquals(Double.valueOf(2.0), calculator.calculate(5, "/", 2.5));
     }
 
     @Test
