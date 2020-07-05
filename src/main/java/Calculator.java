@@ -1,54 +1,42 @@
 public class Calculator {
-    private Double firstValue;
-    private String mathematicalOperation;
-    private Double secondValue;
 
-    public Calculator() {
-
-    }
-
-    public Calculator(Number firstValue, String mathematicalOperation, Number secondValue) {
-        this.firstValue = firstValue.doubleValue();
-        this.mathematicalOperation = mathematicalOperation.replaceAll(" ", "");
-        this.secondValue = secondValue.doubleValue();
-    }
-
-    public Number getFirstValue() {
-        return firstValue;
-    }
-
-    public void setFirstValue(Double firstValue) {
-        this.firstValue = firstValue;
-    }
-
-    public String getMathematicalOperation() {
-        return mathematicalOperation;
-    }
-
-    public void setMathematicalOperation(String mathematicalOperation) {
-        this.mathematicalOperation = mathematicalOperation;
-    }
-
-    public Number getSecondValue() {
-        return secondValue;
-    }
-
-    public void setSecondValue(Double secondValue) {
-        this.secondValue = secondValue;
-    }
-
-    public Double calculate() {
+    public Number calculate(Number firstValue, String mathematicalOperation, Number secondValue) {
+        if (firstValue == null || secondValue == null) {
+            throw new IllegalArgumentException();
+        }
+        double doubleFirstValue = firstValue.doubleValue();
+        double doubleSecondValue = secondValue.doubleValue();
+        mathematicalOperation = mathematicalOperation.replaceAll(" ", "");
+        if (mathematicalOperation.equals("/") && doubleSecondValue == 0) {
+            throw new IllegalArgumentException();
+        }
         switch (mathematicalOperation) {
             case ("*"):
-                return firstValue * secondValue;
+                if (firstValue.intValue() == doubleFirstValue
+                        && secondValue.intValue() == doubleSecondValue) {
+                    return firstValue.intValue() * secondValue.intValue();
+                }
+                return doubleFirstValue * doubleSecondValue;
             case ("+"):
-                return firstValue + secondValue;
+                if (firstValue.intValue() == doubleFirstValue
+                        && secondValue.intValue() == doubleSecondValue) {
+                    return firstValue.intValue() + secondValue.intValue();
+                }
+                return doubleFirstValue + doubleSecondValue;
             case ("-"):
-                return firstValue - secondValue;
+                if (firstValue.intValue() == doubleFirstValue
+                        && secondValue.intValue() == doubleSecondValue) {
+                    return firstValue.intValue() - secondValue.intValue();
+                }
+                return doubleFirstValue - doubleSecondValue;
             case ("/"):
-                return firstValue / secondValue;
+                if (firstValue.intValue() == doubleFirstValue
+                        && secondValue.intValue() == doubleSecondValue) {
+                    return firstValue.intValue() / secondValue.intValue();
+                }
+                return doubleFirstValue / doubleSecondValue;
             default:
-                return null;
+                throw new ArithmeticException();
         }
     }
 }
